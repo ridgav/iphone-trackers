@@ -2,27 +2,27 @@ import requests
 import time
 import os
 
-# Shopify JSON product pages
+# Shopify JSON product pages (exact URLs)
 PRODUCT_URLS = {
     "iPhone 15 128GB": [
-        "https://www.imagineonline.store/products/iphone-15-mtp43hn-a.js",
-        "https://www.imagineonline.store/products/iphone-15-128gb-black.js",
-        "https://www.imagineonline.store/products/iphone-15-128gb-pink.js",
-        "https://www.imagineonline.store/products/iphone-15-128gb-green.js",
-        "https://www.imagineonline.store/products/iphone-15-128gb-yellow.js"
+        "https://www.imagineonline.store/products/iphone-15-mtp43hn-a.js",      # Blue
+        "https://www.imagineonline.store/products/iphone-15-black-128gb.js",   # Black
+        "https://www.imagineonline.store/products/iphone-15-pink-128gb.js",    # Pink
+        "https://www.imagineonline.store/products/iphone-15-green-128gb.js",   # Green
+        "https://www.imagineonline.store/products/iphone-15-yellow-128gb.js",  # Yellow
     ],
     "iPhone 16 128GB": [
-        "https://www.imagineonline.store/products/iphone-16-myed3hn-a.js",
-        "https://www.imagineonline.store/products/iphone-16-myea3hn-a.js",
-        "https://www.imagineonline.store/products/iphone-16-black-128gb.js",
-        "https://www.imagineonline.store/products/iphone-16-white-128gb.js",
-        "https://www.imagineonline.store/products/iphone-16-ultramarine-128gb.js"
-    ]
+        "https://www.imagineonline.store/products/iphone-16-white-128gb.js",       # White
+        "https://www.imagineonline.store/products/iphone-16-black-128gb.js",       # Black
+        "https://www.imagineonline.store/products/iphone-16-pink-128gb.js",        # Pink
+        "https://www.imagineonline.store/products/iphone-16-ultramarine-128gb.js", # Ultramarine
+        "https://www.imagineonline.store/products/iphone-16-teal-128gb.js",        # Teal
+    ],
 }
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
-CHECK_INTERVAL = 60  # seconds (1 min)
+CHECK_INTERVAL = 60  # seconds (1 minute)
 
 def send_telegram(message):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     print("📡 Stock Tracker Started...")
 
     while True:
-        report_lines = []
+        alerts = []
         
         for model_name, urls in PRODUCT_URLS.items():
             for url in urls:
@@ -44,21 +44,23 @@ if __name__ == "__main__":
                     response = requests.get(url)
                     data = response.json()
 
-                    # Loop through all variants for colour details
+                    # Check each colour variant inside the product
                     for variant in data.get("variants", []):
                         colour = variant.get("title", "")
                         available = variant.get("available", False)
-                        price = variant.get("price", 0) / 100  # Convert paise to rupees
-                        status = "✅ In Stock" if available else "❌ Out of Stock"
-                        
-                        report_lines.append(f"{model_name} — {colour}: {status} | ₹{price}")
+                        price = variant.get("price", 0) / 100
+
+                        if available:
+                            alerts.append(f"{model_name} — {colour} is IN STOCK | ₹{price}")
 
                 except Exception as e:
-                    report_lines.append(f"{model_name} — {url.split('/')[-1]}: ❌ Error fetching")
+                    # If URL is wrong or JSON fetch fails, ignore
+                    print(f"{model_name} URL fetch failed:", e)
 
-        # Build and send the Telegram message
-        message = "📢 Stock Update – Imagine Online\n\n" + "\n".join(report_lines)
-        send_telegram(message)
+        # Send Telegram alert only if something is in stock
+        if alerts:
+            message = "📢 Stock Alert – Imagine Online\n\n" + "\n".join(alerts)
+            send_telegram(message)
 
         print("Checked, sleeping...")
         time.sleep(CHECK_INTERVAL)
