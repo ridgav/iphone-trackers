@@ -5,18 +5,17 @@ import os
 # Shopify JSON product pages (exact URLs)
 PRODUCT_URLS = {
     "iPhone 15 128GB": [
-        "https://www.imagineonline.store/products/iphone-15-mtp43hn-a.js",      # Blue
         "https://www.imagineonline.store/products/iphone-15-black-128gb.js",   # Black
         "https://www.imagineonline.store/products/iphone-15-pink-128gb.js",    # Pink
         "https://www.imagineonline.store/products/iphone-15-green-128gb.js",   # Green
         "https://www.imagineonline.store/products/iphone-15-yellow-128gb.js",  # Yellow
     ],
     "iPhone 16 128GB": [
-        "https://www.imagineonline.store/products/iphone-16-white-128gb.js",       # White
-        "https://www.imagineonline.store/products/iphone-16-mye73hn-a-16-black-128.js",       # Black
-        "https://www.imagineonline.store/products/iphone-16-pink-128gb.js",        # Pink
-        "https://www.imagineonline.store/products/iphone-16-ultramarine-128gb.js", # Ultramarine
-        "https://www.imagineonline.store/products/iphone-16-teal-128gb.js",        # Teal
+        "https://www.imagineonline.store/products/iphone-16-mye93hn-a.js",       # White
+        "https://www.imagineonline.store/products/iphone-16-mye73hn-a.js",       # Black
+        "https://www.imagineonline.store/products/iphone-16-myea3hn-a.js",        # Pink
+        "https://www.imagineonline.store/products/iphone-16-myec3hn-a.js", # Ultramarine
+        "https://www.imagineonline.store/products/iphone-16-myed3hn-a.js",        # Teal
     ],
 }
 
