@@ -5,7 +5,7 @@ import os
 # Shopify JSON product pages (exact URLs)
 PRODUCT_URLS = {
     "iPhone 15 128GB": [
-        "https://www.imagineonline.store/products/iphone-15-black-128gb.js",   # Black
+        "https://www.amazon.in/OnePlus-Snapdragon-Segments-Complete-Personalized/dp/B0GRB5C1HW/ref=mp_s_a_1_1?crid=1T231NYT445SI&dib=eyJ2IjoiMSJ9.VlVSKFTUbuyegYiCNmBQw8LJGVI1vFGHQCUDD8DmL7Fkmf1a80uEEW4Z7XLqe1jCFRE0p--jLD2iv4ZThZiVDFCSCQrGr1s_jtZwRpHzcPCaymJouh7bDPWna5yyDIziEy-Ld2AqOBwG482YcTcU14VoZ6AlI6544n9Iod8XmX-2TkjkfIoWfab_g43SXtlicClFThCPkrsNvVZ2R4RzHg.hAXRvNh79DrONEPDe3zNopkkJXoib_vz0hvt86OUa5A&dib_tag=se&keywords=nord+6&qid=1775824904&sprefix=nord+%2Caps%2C420&sr=8-1.js",   # Black
         "https://www.imagineonline.store/products/iphone-15-pink-128gb.js",    # Pink
         "https://www.imagineonline.store/products/iphone-15-green-128gb.js",   # Green
         "https://www.imagineonline.store/products/iphone-15-yellow-128gb.js",  # Yellow
