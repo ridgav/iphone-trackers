@@ -11,7 +11,7 @@ PRODUCT_URLS = {
         "https://www.imagineonline.store/products/iphone-15-yellow-128gb.js",  # Yellow
     ],
     "iPhone 16 128GB": [
-        "https://www.imagineonline.store/products/iphone-16-mye93hn-a.js",       # White
+        "https://www.amazon.in/OnePlus-Snapdragon-Segments-Complete-Personalized/dp/B0GRB5C1HW.js",       # White
         "https://www.imagineonline.store/products/iphone-16-mye73hn-a.js",       # Black
         "https://www.imagineonline.store/products/iphone-16-myea3hn-a.js",        # Pink
         "https://www.imagineonline.store/products/iphone-16-myec3hn-a.js", # Ultramarine
